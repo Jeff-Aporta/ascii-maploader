@@ -1,0 +1,82 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.app {
+  display: grid;
+  align-content: stretch;
+  grid-template-rows: auto 1fr;
+  max-height: 100vh;
+  max-width: 100vw;
+
+  .header {
+    /* background-color: lightgreen; */
+  }
+
+  .app-content {
+    display: grid;
+    width: 100%;
+    height: 100vh;
+    align-content: stretch;
+    grid-template-columns: auto 1fr auto;
+    .sidebar {
+      &.right {
+        .isVisible{
+          filter: brightness(1.1) hue-rotate(50deg);
+        }
+        ul {
+          list-style-type: disc;
+          padding-left: 15px;
+        }
+      }
+    }
+    .main-area {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      align-content: stretch;
+      grid-template-columns: 1fr auto;
+      .root {
+        overflow: auto;
+        width: 100%;
+        max-height: calc(100vh - 40px);
+        flex-direction: column;
+        align-content: stretch;
+      }
+    }
+  }
+}
+
+.app {
+  --bg: #121230;
+  --scroll-cont: hsl(240, 20%, 30%);
+  --border-scroll-cont: hsl(200, 50%, 30%);
+
+  &.light {
+    --bg: white;
+    --scroll-cont: gray;
+    --border-scroll-cont: whitesmoke;
+  }
+
+  &,
+  * {
+    ::-webkit-scrollbar {
+      width: 12px; /* Ancho de la barra */
+      height: 12px; /* Altura de la barra (para scroll horizontal) */
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg); /* Color de fondo de la pista */
+      border-radius: 10px; /* Redondeo de bordes */
+    }
+
+    /* Estiliza el "thumb" de la barra de desplazamiento (el controlador que se mueve) */
+    ::-webkit-scrollbar-thumb {
+      background-color: var(--scroll-cont); /* Color del controlador */
+      border-radius: 10px; /* Redondeo del controlador */
+      border: 1px solid var(--border-scroll-cont); /* Espacio alrededor del controlador */
+    }
+  }
+}

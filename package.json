@@ -1,0 +1,17 @@
+{
+  "name": "ascii-maploader",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "build": "npm run sass-build && rollup -c",
+    "sass-build": "sass --no-source-map --style compressed public/theme/scss/abrevs.scss:public/css/main-sass.css"
+  },
+  "keywords": [],
+  "author": "J3FF-4P0RT4, P4TR1C14",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "rollup-plugin-terser": "^7.0.2"
+  }
+}

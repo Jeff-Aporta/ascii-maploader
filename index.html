@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ASCII Map Loader JS</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://jeff-aporta.github.io/portafolio/src/imgs/icon.png"
+    />
+
+    <meta property="og:site_name" content="ASCII Map Loader" />
+    <meta property="og:title" content="ASCII Map Loader" />
+    <meta
+      property="og:description"
+      content="Carga dependencias JS, JSX o CSS con dibujos ASCII"
+    />
+    <meta
+      property="og:image"
+      content="https://jeff-aporta.github.io/ASCIIMapLoader/src/img/logo.jpeg"
+    />
+    <script src="public/index.js"></script>
+    <script>
+      const sections = {};
+
+      asciiMap.CLI.react_mui_fa();
+      asciiMap
+        .tree("public")
+        .subDir("css", (tree) => tree.css("main-sass"))
+        .subDir("theme", (tree) =>
+          tree.jsx(
+            "content",
+            "HeaderMenu",
+            "setup-mui",
+            "SideleftMenu",
+            "SiderightMenu"
+          )
+        )
+        .subDir("sections", (tree) => tree.jsx("introduccion", "if"))
+        .jsxcss("index")
+        .writehtml();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
