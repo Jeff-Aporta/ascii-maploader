@@ -10,7 +10,6 @@ async function readJsonFile(filePath) {
     json.version = [n1, n2, n3].join(".");
     await fs.writeFile("./package.json", JSON.stringify(json, null, 2));
   } catch (error) {
-    console.error("Error al leer el archivo:", error);
   }
 }
 

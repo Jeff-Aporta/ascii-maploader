@@ -2,7 +2,31 @@ body,
 html {
   margin: 0;
   padding: 0;
-  overflow: hidden;
+  height: 100vh;
+  max-height: 100vh;
+}
+
+.icon-social {
+  --c: white;
+  &.black {
+    --c: black;
+  }
+  --s: 2px;
+  --s-: -2px;
+  text-shadow: var(--s-) var(--s-) 0 var(--c), var(--s) var(--s-) 0 var(--c),
+    var(--s-) var(--s) 0 var(--c), var(--s) var(--s) 0 var(--c);
+}
+
+.isVisible {
+  filter: brightness(1.1) hue-rotate(50deg) !important;
+}
+
+.c-pointer {
+  cursor: pointer;
+}
+
+.no-select {
+  user-select: none;
 }
 
 .app {
@@ -12,8 +36,36 @@ html {
   max-height: 100vh;
   max-width: 100vw;
 
+  &:has(#check-menu-responsive:checked) {
+    .activator-menuleft {
+      .true {
+        display: block;
+      }
+      .false {
+        display: none;
+      }
+    }
+    .backdrop-responsive {
+      pointer-events: none;
+      opacity: 0;
+    }
+  }
+  &:has(#check-menu-responsive:not(:checked)) {
+    .activator-menuleft {
+      .true {
+        display: none;
+      }
+      .false {
+        display: block;
+      }
+    }
+    .backdrop-responsive {
+      opacity: 1;
+    }
+  }
+
   .header {
-    /* background-color: lightgreen; */
+    z-index: 10;
   }
 
   .app-content {
@@ -22,14 +74,36 @@ html {
     height: 100vh;
     align-content: stretch;
     grid-template-columns: auto 1fr auto;
-    .sidebar {
-      &.right {
-        .isVisible{
-          filter: brightness(1.1) hue-rotate(50deg);
+    .backdrop-responsive {
+      transition: opacity 0.2s;
+    }
+    &:has(#check-menu-responsive:checked) {
+      .backdrop-responsive {
+        opacity: 0;
+      }
+    }
+    &:has(#check-menu-responsive:not(:checked)) {
+      .backdrop-responsive {
+        opacity: 1;
+      }
+    }
+    .sideleft-menu-responsive-container {
+      .sidebar {
+        &.left-responsive {
+          transition: left 0.3s;
+          &:has(#check-menu-responsive:checked) {
+            left: -100%;
+          }
+          &:has(#check-menu-responsive:not(:checked)) {
+            left: 0%;
+          }
         }
-        ul {
-          list-style-type: disc;
-          padding-left: 15px;
+        &.right {
+          
+          ul {
+            list-style-type: disc;
+            padding-left: 15px;
+          }
         }
       }
     }
@@ -42,7 +116,7 @@ html {
       .root {
         overflow: auto;
         width: 100%;
-        max-height: calc(100vh - 40px);
+        max-height: calc(100vh - 50px);
         flex-direction: column;
         align-content: stretch;
       }

@@ -4,39 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ASCII Map Loader JS</title>
-    <link
-      rel="icon"
-      type="image/png"
-      href="https://jeff-aporta.github.io/portafolio/src/imgs/icon.png"
-    />
-
     <meta property="og:site_name" content="ASCII Map Loader" />
     <meta property="og:title" content="ASCII Map Loader" />
     <meta
       property="og:description"
-      content="Carga dependencias JS, JSX o CSS con dibujos ASCII"
+      content="Carga dependencias JS, JSX o CSS con dibujos ASCII o estructura cascada"
     />
-    <meta
-      property="og:image"
-      content="https://jeff-aporta.github.io/ASCIIMapLoader/src/img/logo.jpeg"
-    />
-    <script src="public/index.js"></script>
+    <link rel="icon" type="image/png" href="public/img/icon64x64.png" />
+    <meta property="og:image" content="public/img/logo.jpeg" />
+    <link rel="apple-touch-icon" href="public/img/icon64x64.png" />
+
+    <script src="public/index.min.js"></script>
     <script>
-      const sections = {};
       asciiMap.CLI.react_mui_fa();
       asciiMap
         .tree("https://jeff-aporta.github.io/fluid-css")
-        .js("public/index")
+        .js("public/index.min")
         .writehtml();
+        
       asciiMap
         .tree("public")
         .subDir("css", (tree) => tree.css("main-sass"))
         .subDir("theme", (tree) =>
           tree.jsx(
+            "_init",
+            "_mui-fluid",
+            "_mui-setup",
             "content",
             "HeaderMenu",
-            "mui-fluid",
-            "mui-setup",
             "SideleftMenu",
             "SiderightMenu"
           )

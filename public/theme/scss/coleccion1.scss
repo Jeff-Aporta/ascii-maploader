@@ -21,9 +21,9 @@
 }
 
 .d-center {
-  @extend .d-flex !optional;
-  @extend .jc-c !optional;
-  @extend .ai-c !optional;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .flex-wrap {
@@ -31,18 +31,18 @@
 }
 
 .d-flex-wrap {
-  @extend .d-flex !optional;
-  @extend .flex-wrap !optional;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .d-flex-col {
-  @extend .d-flex !optional;
-  @extend .flex-column !optional;
+  display: flex;
+  flex-direction: column;
 }
 
 .d-flex-col-center {
-  @extend .d-center !optional;
-  @extend .flex-column !optional;
+  display: flex;
+  flex-direction: column;
 }
 
 .flex-wrap {
@@ -62,7 +62,7 @@
 }
 
 .h-full {
-  @extend .min-h-100vh !optional;
+  min-height: 100vh;
 }
 
 .square {
@@ -70,7 +70,7 @@
 }
 
 .circle {
-  @extend .square;
+  aspect-ratio: 1;
   border-radius: 50%;
 }
 

@@ -5,15 +5,7 @@ if (typeof window != "undefined") {
   Object.assign(window, window["MaterialUI"]);
 }
 
-function idR() {
-  return Math.random().toString(36).replace("0.", "idR-");
-}
-
-function _idR(props) {
-  return <_ {...props} id={idR()} />;
-}
 function _(props) {
-  console.log(props);  
   if (!props) {
     return <React.Fragment {...props} />;
   }

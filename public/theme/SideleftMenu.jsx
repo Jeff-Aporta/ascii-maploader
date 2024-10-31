@@ -1,10 +1,61 @@
+function SideleftMenuResponsive() {
+  return (
+    <_
+      className={fluidCSS()
+        .gtX(650, { display: "none" })
+        .end("sideleft-menu-responsive-container")}
+    >
+      <label
+        htmlFor="check-menu-responsive"
+        style={{
+          position: "absolute",
+          height: "100%",
+          width: "100%",
+          backdropFilter: "brightness(0.5) blur(3px)",
+        }}
+        className="backdrop-responsive"
+      />
+      <Paper
+        variant="nofill"
+        className={fluidCSS()
+          .gtX(650, { display: "none" })
+          .end(`sidebar left-responsive padh-10px padw-10px`)}
+        style={{
+          position: "absolute",
+          height: "100%",
+          zIndex: 10,
+        }}
+      >
+        <input
+          type="checkbox"
+          defaultChecked={true}
+          id="check-menu-responsive"
+          className="d-none no-select"
+        />
+        <ContentLeftMenu />
+      </Paper>
+    </_>
+  );
+}
 function SideleftMenu() {
   return (
-    <Card variant="nofill" className="sidebar left padh-10px">
-      <Typography variant="h6" className="pad-10px">
-        Documentación
-      </Typography>
-      <hr className="op-30" />
+    <Card
+      variant="nofill"
+      className={fluidCSS()
+        .ltX(650, { display: "none" })
+        .end(`sidebar left padh-10px`)}
+    >
+      <ContentLeftMenu />
+    </Card>
+  );
+}
+
+function ContentLeftMenu() {
+  return (
+    <_>
+      <Typography variant="h4" className="padw-20px">Documentación</Typography>
+      <hr className="op-20" />
+      <br />
       <Button_SideLeft
         size="large"
         startIcon={<i className="fa-regular fa-file-lines" />}
@@ -25,7 +76,7 @@ function SideleftMenu() {
         <Button_SideLeft>Uso</Button_SideLeft>
         <Button_SideLeft>Conversiones</Button_SideLeft>
       </Acord_SideLeft>
-    </Card>
+    </_>
   );
 }
 

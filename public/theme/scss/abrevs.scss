@@ -15,7 +15,7 @@
 }
 
 @each $abrev,
-  $value in (start: start, c: center, sb: space-between, se: space-evenly)
+  $value in (start: start, end: end, c: center, sb: space-between, se: space-evenly)
 {
   .jc-#{$abrev} {
     justify-content: $value;
@@ -99,20 +99,6 @@
 @for $i from 11 through 50 {
   .fs-#{$i * 2}px {
     font-size: #{$i * 2}px;
-  }
-}
-@for $i from 1 through 20 {
-  .w-#{$i * 50}px {
-    width: #{$i * 50}px;
-  }
-  .min-w-#{$i * 50}px {
-    min-width: #{$i * 50}px;
-  }
-  .h-#{$i * 50}px {
-    height: #{$i * 50}px;
-  }
-  .min-h-#{$i * 50}px {
-    min-height: #{$i * 50}px;
   }
 }
 

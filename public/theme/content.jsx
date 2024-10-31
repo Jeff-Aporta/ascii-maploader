@@ -43,15 +43,21 @@ function newContent(props) {
         style = {};
       }
       return (
-        <_idR className={`content-container ${this.class} indexed`} style={style}>
-          <_T_ variant={`h${this.deep + 1}`} className="titulo">{this.titulo}</_T_>
-          <br />
+        <IDR className={`content-container ${this.class} indexed`} style={style}>
+          <$ variant={`h${this.deep + 1}`} className="titulo">
+            {this.titulo}
+          </$>
+          <$br/>
           {this.contStart}
-          {!this.deep ? <hr className="op-40" /> : ""}
-          <br />
+          {!this.deep ? (
+            <$hr/>
+          ) : (
+            ""
+          )}
+          <$br />
           {this.childs.map((child) => child.render())}
           {this.contEnd}
-        </_idR>
+        </IDR>
       );
     }
     end(contEnd) {

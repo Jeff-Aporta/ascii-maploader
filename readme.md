@@ -1,4 +1,8 @@
-# Usar con CDN
+# ASCII Map Loader JS
+
+Carga dependencias JS, JSX o CSS con dibujos ASCII o estructura cascada
+
+## Usar con CDN
 
 usa la url
 
@@ -12,7 +16,7 @@ en tu script
 <script src="https://jeff-aporta.github.io/ascii-maploader/public/index.js"></script>
 ```
 
-# Usar con npm
+## Usar con npm
 
 ```bash
 npm install ascii-maploader

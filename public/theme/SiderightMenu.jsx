@@ -1,5 +1,12 @@
 function SiderightMenu() {
-  return <Card variant="nofill" className="sidebar right pad-20px" />;
+  return (
+    <Card
+      variant="nofill"
+      className={fluidCSS()
+        .ltX(950, { display: "none" })
+        .end("sidebar right pad-20px")}
+    />
+  );
 }
 
 function buscar_idR(query, tree = {}) {
