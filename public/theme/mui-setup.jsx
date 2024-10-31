@@ -13,6 +13,7 @@ function _idR(props) {
   return <_ {...props} id={idR()} />;
 }
 function _(props) {
+  console.log(props);  
   if (!props) {
     return <React.Fragment {...props} />;
   }

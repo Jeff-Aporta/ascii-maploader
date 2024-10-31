@@ -30,7 +30,7 @@ function generateIndex(tree, key) {
           );
         } else {
           return (
-            <li id={t[0] + "-index"}>
+            <li id={`${key}-index`}>
               <Link href={`#${t[0]}`} color="inherit" underline="none">
                 {
                   document.getElementById(t[0]).querySelector(".titulo")

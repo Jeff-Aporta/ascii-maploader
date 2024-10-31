@@ -23,8 +23,11 @@
     <script src="public/index.js"></script>
     <script>
       const sections = {};
-
       asciiMap.CLI.react_mui_fa();
+      asciiMap
+        .tree("https://jeff-aporta.github.io/fluid-css")
+        .js("public/index")
+        .writehtml();
       asciiMap
         .tree("public")
         .subDir("css", (tree) => tree.css("main-sass"))
@@ -32,7 +35,8 @@
           tree.jsx(
             "content",
             "HeaderMenu",
-            "setup-mui",
+            "mui-fluid",
+            "mui-setup",
             "SideleftMenu",
             "SiderightMenu"
           )

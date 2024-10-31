@@ -12,8 +12,8 @@ function Main({ children }) {
 function changeContent(key) {
   _unobserver();
   ReactDOM.render(sections[key], document.querySelector(".main-area"));
-  updateIndexes();
   _observer();
+  updateIndexes();
 }
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
       <HeaderMenu />
       <div className="app-content">
         <SideleftMenu />
-        <Typography variant="t1">Probando</Typography>;
+        <_ className="main-area">{sections["introduccion"]}</_>
         <SiderightMenu />
       </div>
     </Main>

@@ -44,7 +44,7 @@ function newContent(props) {
       }
       return (
         <_idR className={`content-container ${this.class} indexed`} style={style}>
-          <Typography variant={`h${this.deep + 1}`} className="titulo">{this.titulo}</Typography>
+          <_T_ variant={`h${this.deep + 1}`} className="titulo">{this.titulo}</_T_>
           <br />
           {this.contStart}
           {!this.deep ? <hr className="op-40" /> : ""}

@@ -4,6 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "gitadd": "npm run build && git add . && git add --renormalize .",
+    "gitpush": "git push origin main && node _",
     "build": "npm run sass-build && rollup -c",
     "sass-build": "sass --no-source-map --style compressed public/theme/scss/abrevs.scss:public/css/main-sass.css"
   },
