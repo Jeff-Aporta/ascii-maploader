@@ -27,7 +27,7 @@ function HeaderMenu() {
       <div className="header_logo d-center gap-20px">
         <ActivadorMenuIzquierda />
         <img
-          src="/public/img/icon.svg"
+          src="public/img/icon.svg"
           alt=""
           style={{ width: "30px", height: "30px" }}
           className={fluidCSS().ltX(450, { display: "none" }).end()}
