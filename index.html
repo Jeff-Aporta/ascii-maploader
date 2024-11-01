@@ -21,27 +21,32 @@
         .tree("https://jeff-aporta.github.io/fluid-css")
         .js("public/index.min")
         .writehtml();
-        
+
       asciiMap
         .tree("public")
-        .subDir("css", (tree) => tree.css("main-sass"))
-        .subDir("theme", (tree) =>
-          tree.jsx(
-            "init",
-            "mui-fluid",
-            "mui-setup",
-            "content",
-            "HeaderMenu",
-            "SideleftMenu",
-            "SiderightMenu"
-          )
+        .subDir("css", (css) => css.css("main-sass"))
+        .subDir("theme", (theme) =>
+          theme
+            .css("main")
+            // .jsx("mui-setup", "fluids", "helper", "main")
+            // .subDir("v1", (v1) =>
+            //   v1.jsx(
+            //     "HeaderMenu",
+            //     "SectionContent",
+            //     "SideleftMenu",
+            //     "SiderightMenu"
+            //   )
+            // )
         )
-        .subDir("sections", (tree) => tree.jsx("Introduccion", "if"))
-        .jsxcss("index")
+        // .subDir("sections", (sections) => sections.jsx("Intro"))
         .writehtml();
     </script>
+    <script src="public/app.client.merged.min.js"></script>
   </head>
   <body>
     <div id="root"></div>
+    <script type="text/babel">
+      initApp();
+    </script>
   </body>
 </html>
