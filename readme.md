@@ -1,3 +1,6 @@
+npm uninstall babel
+npm install --save-dev babel-cli
+
 # ASCII Map Loader JS
 
 Carga dependencias JS, JSX o CSS con dibujos ASCII o estructura cascada
