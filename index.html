@@ -1,52 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <title>ASCII Map Loader JS</title>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ASCII Map Loader JS</title>
     <meta property="og:site_name" content="ASCII Map Loader" />
     <meta property="og:title" content="ASCII Map Loader" />
     <meta
       property="og:description"
       content="Carga dependencias JS, JSX o CSS con dibujos ASCII o estructura cascada"
     />
-    <link rel="icon" type="image/png" href="public/img/icon64x64.png" />
-    <meta property="og:image" content="public/img/logo.jpeg" />
-    <link rel="apple-touch-icon" href="public/img/icon64x64.png" />
+    <link rel="icon" type="image/png" href="static/img/icon64x64.png" />
+    <meta property="og:image" content="static/img/logo.jpeg" />
+    <link rel="apple-touch-icon" href="static/img/icon64x64.png" />
 
-    <script src="public/index.min.js"></script>
+    <script src="static/js/index.all.min.js"></script>
     <script>
+      const deploy = window.location.href.includes("github");
+      console.log({ deploy });
+
       asciiMap.CLI.react_mui_fa();
+      asciiMap.CLI.fluidCSS();
+      asciiMap.writehtml(`
+        🔗 https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js
+      `);
+
+      //Load theme
       asciiMap
-        .tree("https://jeff-aporta.github.io/fluid-css")
-        .js("public/index.min")
+        .tree("theme")
+        .subDir("css", (css) => {
+          css.css("main-sass", "main", "PR");
+        })
+        .jsx("00-mui-setup", "01-fluids", "01-md", "03-helper", "app-template")
+        .subDir("v1", (v1) =>
+          v1.jsx(
+            "tools",
+            "HeaderMenu",
+            "SideleftMenu",
+            "SiderightMenu"
+          )
+        )
         .writehtml();
 
-      asciiMap
-        .tree("public")
-        .subDir("css", (css) => css.css("main-sass"))
-        .subDir("theme", (theme) =>
-          theme
-            .css("main")
-            // .jsx("mui-setup", "fluids", "helper", "main")
-            // .subDir("v1", (v1) =>
-            //   v1.jsx(
-            //     "HeaderMenu",
-            //     "SectionContent",
-            //     "SideleftMenu",
-            //     "SiderightMenu"
-            //   )
-            // )
-        )
-        // .subDir("sections", (sections) => sections.jsx("Intro"))
-        .writehtml();
+      //Load app
+      if (deploy) {
+        asciiMap.writehtml(`
+          📄 static/js/app.client.merged.min.js
+        `);
+      } else {
+        asciiMap
+          .tree("static/jsx")
+          .jsx("Intro", "learn", "initApp")
+          .subDir("components", (component) => {
+            component.jsx("main");
+          })
+          .subDir("use", (use) => {
+            use.jsx("cascade", "string");
+          })
+          .writehtml();
+      }
     </script>
-    <script src="public/app.client.merged.min.js"></script>
   </head>
   <body>
-    <div id="root"></div>
-    <script type="text/babel">
-      initApp();
-    </script>
+    <div id="root">
+      <style>
+        body,
+        html {
+          background-color: #121230;
+          color: white;
+          padding: 10px;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+      </style>
+      <script type="text/babel">
+        try {
+          initApp();
+        } catch (error) {
+          document.querySelector("#root #error").innerHTML = error;
+        }
+      </script>
+      <div id="error"></div>
+    </div>
   </body>
 </html>

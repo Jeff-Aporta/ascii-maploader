@@ -1,0 +1,12 @@
+➤📁 static
+├──🎨 index.css
+├──📄 index.js
+│
+├──📁 componentes
+│   ├──📄 logic.js
+│   ├──📄 component-1.jsx
+│   └──📄 component-2.jsx
+│   
+├──📁 src
+│   ├──📁 css
+╧   ╧   └──🎨 code-prettify.css

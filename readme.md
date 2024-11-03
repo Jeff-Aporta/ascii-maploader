@@ -1,26 +1,77 @@
-npm uninstall babel
-npm install --save-dev babel-cli
+# ASCII Map Loader
 
-# ASCII Map Loader JS
+<h2>
+    Documentación:
+    <br/>
+    <a href="https://jeff-aporta.github.io/ascii-maploader/">
+        https://jeff-aporta.github.io/ascii-maploader/
+        <br/>
+        <br/>
+        <p align="center">
+            <img src="static/img/logo.jpeg" width="300" height="300" />
+        </p>
+    </a>
+</h2>
 
-Carga dependencias JS, JSX o CSS con dibujos ASCII o estructura cascada
+**ASCII Map Loader** es un lenguaje interpretado diseñado para cargar dependencias de archivos `.jsx`, `.js`, y `.css` en proyectos web. Su principal característica es la capacidad de inyectar estos elementos en tiempo real al cargar un documento HTML, usando la función `document.write()`. Esto lo hace ideal para desarrollos que involucren múltiples módulos y para verificar la compatibilidad de archivos `.mjs` en páginas estáticas o aplicaciones que necesiten ser cargadas directamente en el cliente.
 
-## Usar con CDN
+## Instalación
 
-usa la url
+### Usando CDN
 
-```text
-https://jeff-aporta.github.io/ascii-maploader/public/index.js
-```
-
-en tu script
+Para integrar **ASCII Map Loader** en tu proyecto, simplemente añade la siguiente URL en tu archivo HTML:
 
 ```html
-<script src="https://jeff-aporta.github.io/ascii-maploader/public/index.js"></script>
+<script
+  type="text/javascript"
+  src="https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js"
+></script>
 ```
 
-## Usar con npm
+Esto permitirá que tu aplicación utilice las funcionalidades de **ASCII Map Loader** para estructurar y gestionar las dependencias de manera programada y visual.
+
+### Usando npm
+
+Si prefieres usar npm, ejecuta el siguiente comando en tu terminal:
 
 ```bash
 npm install ascii-maploader
 ```
+
+Luego, en tu código JavaScript, importa el módulo con:
+
+```javascript
+import asciiMap from "ascii-maploader";
+```
+
+## Funciones del Módulo
+
+### Estructuración de Cascada
+
+- **tree**: Inicia la generación de un árbol para organizar las dependencias en cascada.
+
+### Funciones de Carga
+
+- **writehtml**: Inserta las dependencias generadas directamente en el documento HTML.
+
+### CLI
+
+Incluye un gestor que facilita la vinculación a bibliotecas populares como React y Babel.
+
+### Funciones de Conversión
+
+- **html**: Retorna un arreglo de etiquetas `<link>` y `<script>` que representan las dependencias.
+- **json**: Devuelve un JSON que representa la estructura de dependencias.
+
+## Ejemplo de Uso
+
+```javascript
+asciiMap
+  .tree("public")
+  .subDir("ex-branch", (branch) => {
+    branch.css("style").js("script").jsx("App");
+  })
+  .writehtml();
+```
+
+El código anterior generará e insertará en tu HTML las etiquetas de importación necesarias, manteniendo un código limpio y organizado para tus dependencias.

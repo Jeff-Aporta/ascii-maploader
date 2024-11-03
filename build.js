@@ -1,13 +1,11 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+import { merger, build_SASS_rollup } from "merger-client-static-jsx";
 
-import merger from "./merger.js";
-
-// Configura __dirname para ESM
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+await build_SASS_rollup({
+  mainSASS: "./theme/scss/abrevs.scss",
+  outCSS: "./theme/css/main-sass.css",
+});
 
 merger({
-  folderRoot: path.join(__dirname, "public"),
-  output: path.join(__dirname, "public", "app.client.merged.min.js"),
+  folderRoot: "./static/jsx",
+  output: "./static/js/app.client.merged.min.js",
 });
