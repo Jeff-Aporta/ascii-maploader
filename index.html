@@ -17,70 +17,25 @@
 
     <script src="static/js/index.all.min.js"></script>
     <script>
-      const deploy = window.location.href.includes("github");
-      console.log({ deploy });
-
-      asciiMap.CLI.react_mui_fa();
-      asciiMap.CLI.fluidCSS();
-      asciiMap.writehtml(`
-        🔗 https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js
-      `);
-
-      //Load theme
-      asciiMap
-        .tree("theme")
-        .subDir("css", (css) => {
-          css.css("main-sass", "main", "PR");
-        })
-        .jsx("00-mui-setup", "01-fluids", "01-md", "03-helper", "app-template")
-        .subDir("v1", (v1) =>
-          v1.jsx(
-            "tools",
-            "HeaderMenu",
-            "SideleftMenu",
-            "SiderightMenu"
-          )
-        )
-        .writehtml();
-
-      //Load app
-      if (deploy) {
+      asciiMap.CLI.designSysCliRender_DocuDesignPR();
+      if (window.location.href.includes("github")) {
         asciiMap.writehtml(`
           📄 static/js/app.client.merged.min.js
         `);
       } else {
         asciiMap
           .tree("static/jsx")
-          .jsx("Intro", "learn", "initApp")
-          .subDir("components", (component) => {
-            component.jsx("main");
+          .subDir("contents", (contents) => {
+            contents.jsx("cascade", "intro", "learn", "string");
           })
-          .subDir("use", (use) => {
-            use.jsx("cascade", "string");
-          })
+          .jsx("custom_components", "initApp")
           .writehtml();
       }
     </script>
   </head>
   <body>
-    <div id="root">
-      <style>
-        body,
-        html {
-          background-color: #121230;
-          color: white;
-          padding: 10px;
-          font-family: Arial, Helvetica, sans-serif;
-        }
-      </style>
-      <script type="text/babel">
-        try {
-          initApp();
-        } catch (error) {
-          document.querySelector("#root #error").innerHTML = error;
-        }
-      </script>
-      <div id="error"></div>
-    </div>
+    <script>
+      asciiMap.CLI.designSysCliRender_DocuDesign_body();
+    </script>
   </body>
 </html>

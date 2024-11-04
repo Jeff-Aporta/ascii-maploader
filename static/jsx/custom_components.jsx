@@ -12,16 +12,6 @@ function $CardDef(props) {
   );
 }
 
-function $PR({ children, lang }) {
-  return (
-    <$Copy>
-      <pre className="prettyprint">
-        <code className={`lang-${lang}`}>{children}</code>
-      </pre>
-    </$Copy>
-  );
-}
-
 function $enfasis({ children }) {
   return (
     <big>

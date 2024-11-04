@@ -3,27 +3,17 @@ function _learn() {
 
   const titulo = "Lenguaje de dependencias";
 
-  const ex = loadStringsSync("static/jsx/frag-01.txt");
+  const ex = loadStringsSync("static/jsx/fragmentos/frag-01.txt");
 
   return (
     <$FMD>
       <$index
         label="Empecemos"
         variant="h2"
-        className={fluidCSS()
-          .btwX([950, 1150], { display: "none" })
-          .end("nowrap")}
+        className="nowrap"
       >
         {titulo}
       </$index>
-      <$
-        variant="h5"
-        className={fluidCSS()
-          .btwX([950, 1150], { display: [, "none"] })
-          .end("nowrap")}
-      >
-        {titulo}
-      </$>
       <$$h />
       El lenguaje de carga de dependencias representado en la estructura del
       ejemplo permite gestionar de manera eficiente la inclusión de múltiples

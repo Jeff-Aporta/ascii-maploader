@@ -1,7 +1,7 @@
 function _string() {
   setTimeout(PR.prettyPrint);
   const titulo = "Mapa ASCII";
-  const ex = loadStringsSync("static/jsx/use/frag-01.txt");
+  const ex = loadStringsSync("static/jsx/fragmentos/frag-03.txt");
   return (
     <$FMD>
       <$index variant="h1" className={fluidCSS().end("nowrap")}>

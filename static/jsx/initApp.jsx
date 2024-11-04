@@ -72,6 +72,9 @@ function initApp() {
         lbl: " - ",
       },
       {
+        lbl: "Empecemos",
+      },
+      {
         lbl: "Introducción",
         id: "intro",
         content: () => <_intro />,
@@ -84,7 +87,7 @@ function initApp() {
         i: "fa-solid fa-chalkboard-user",
       },
       {
-        lbl: " - ",
+        lbl: " ",
       },
       {
         lbl: "Uso",

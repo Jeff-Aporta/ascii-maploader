@@ -1,10 +1,10 @@
 function _cascade() {
   setTimeout(PR.prettyPrint);
   const titulo = "Modo cascada";
-  const ex = loadStringsSync("static/jsx/use/frag-02.txt");
+  const ex = loadStringsSync("static/jsx/fragmentos/frag-02.txt");
   return (
     <$FMD>
-      <$index label="Inicio" variant="h2" className={fluidCSS().end("nowrap")}>
+      <$index label="Inicio" variant="h2" className="nowrap">
         {titulo}
       </$index>
       <$$h />

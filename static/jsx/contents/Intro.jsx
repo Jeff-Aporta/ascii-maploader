@@ -11,20 +11,10 @@ function _intro() {
       <$index
         label="Bienvenido"
         variant="h1"
-        className={fluidCSS()
-          .btwX([950, 1050], { display: "none" })
-          .end("nowrap")}
+        className="nowrap"
       >
         {titulo}
       </$index>
-      <$
-        variant="h2"
-        className={fluidCSS()
-          .btwX([950, 1050], { display: [, "none"] })
-          .end("nowrap")}
-      >
-        {titulo}
-      </$>
       <$$h />
       <div
         className={fluidCSS()
