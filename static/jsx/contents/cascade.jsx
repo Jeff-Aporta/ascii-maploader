@@ -27,7 +27,10 @@ function _cascade() {
         diferentes archivos entre sí.
         <$h />
         Un ejemplo de cómo usar esta función es el siguiente:
-        <$PR lang="js">{`var my_tree = asciiMap.tree("name-root");`}</$PR>
+        <$PR
+          elevation={0}
+          lang="js"
+        >{`var my_tree = asciiMap.tree("name-root");`}</$PR>
         En este caso, my_tree será el árbol que contiene todos los elementos que
         vayas a agregar a partir de este punto. Esta organización es fundamental
         para proyectos más complejos, donde es necesario mantener una estructura
@@ -40,20 +43,29 @@ function _cascade() {
       <$CardDef title=".css(...filesname)">
         Esta función se utiliza para agregar archivos de estilo en formato .css
         al árbol de tu proyecto. Por ejemplo, puedes escribir:
-        <$PR lang="js">{`tree.css("style1","style2","style3");`}</$PR>
+        <$PR
+          elevation={0}
+          lang="js"
+        >{`tree.css("style1","style2","style3");`}</$PR>
         para incluir varios estilos a la vez.
       </$CardDef>
       <$CardDef title=".js(...filesname)">
         Con esta función, puedes agregar archivos de JavaScript en formato .js
         al árbol. Un ejemplo sería:
-        <$PR lang="js">{`tree.js("logic1","logic2","logic3");`}</$PR>
+        <$PR
+          elevation={0}
+          lang="js"
+        >{`tree.js("logic1","logic2","logic3");`}</$PR>
         donde puedes añadir múltiples archivos de lógica de tu aplicación.
       </$CardDef>
       <$CardDef title=".jsx(...filesname)">
         Similar a la función anterior, esta se usa para agregar archivos de
         JavaScript que contienen sintaxis JSX, comúnmente utilizados con React.
         Por ejemplo, al escribir
-        <$PR lang="js">{`tree.jsx("react1","react2","react3");`}</$PR>
+        <$PR
+          elevation={0}
+          lang="js"
+        >{`tree.jsx("react1","react2","react3");`}</$PR>
         estarás incluyendo varios componentes React en tu árbol.
       </$CardDef>
       Estas funciones simplifican la gestión de archivos en tu proyecto,
@@ -68,7 +80,7 @@ function _cascade() {
         <$ variant="h9">
           <$secundario>Ejemplo</$secundario>
         </$>
-        <$PR lang="js">
+        <$PR elevation={0} lang="js">
           {[
             `tree.subDir("name-branch", branch=>{`,
             `    branch.css("styles").js("script").jsx("App");`,
@@ -97,7 +109,7 @@ function _cascade() {
         carpetas.
         <$h />
         Por ejemplo, al usar la función de esta forma:
-        <$PR lang="js">
+        <$PR elevation={0} lang="js">
           {[
             `asciiMap.tree("public").subDir("ex-branch", branch=>{`,
             `    branch.css("style").js("script").jsx("App");`,
@@ -127,7 +139,7 @@ function _cascade() {
         revisar las etiquetas antes de insertarlas en el HTML.
         <$h />
         Por ejemplo, al utilizar la función de esta manera:
-        <$PR lang="js">
+        <$PR elevation={0} lang="js">
           {[
             `asciiMap.tree("public").subDir("ex-branch", branch=>{`,
             `    branch.css("style").js("script").jsx("App");`,
@@ -136,7 +148,7 @@ function _cascade() {
         </$PR>
         El resultado será un arreglo que incluye las etiquetas necesarias para
         cargar los archivos correspondientes:
-        <$PR lang="js">
+        <$PR elevation={0} lang="js">
           [<br />
           {asciiMap
             .tree("public")
@@ -155,18 +167,19 @@ function _cascade() {
         formato es especialmente útil si deseas integrar los datos en
         aplicaciones que manejan estructuras JSON o si necesitas realizar
         operaciones adicionales sobre la información.
-        <$h />
-        Por ejemplo, al utilizar la función de esta manera:
-        <$PR lang="js">
+        <p>Por ejemplo, al utilizar la función de esta manera:</p>
+        <$PR elevation={0} lang="js">
           {[
             `asciiMap.tree("public").subDir("ex-branch", branch=>{`,
             `    branch.css("style").js("script").jsx("App");`,
             `}).toJson()`,
           ].join("\n")}
         </$PR>
-        El resultado será un objeto JSON que representa la jerarquía de tus
-        archivos de la siguiente manera:
-        <$PR lang="json">
+        <p>
+          El resultado será un objeto JSON que representa la jerarquía de tus
+          archivos de la siguiente manera:
+        </p>
+        <$PR elevation={0} lang="json">
           {JSON.stringify(
             asciiMap
               .tree("public")
@@ -182,10 +195,13 @@ function _cascade() {
             .filter((e) => Boolean(e.trim()))
             .join("\n")}
         </$PR>
-        En esta representación, cada carpeta y archivo está claramente definido,
-        permitiendo ver su relación dentro de la estructura del proyecto. Esto
-        no solo facilita la visualización, sino que también permite que otros
-        sistemas procesen esta información de manera más eficiente.
+        <p>
+          En esta representación, cada carpeta y archivo está claramente
+          definido, permitiendo ver su relación dentro de la estructura del
+          proyecto. Esto no solo facilita la visualización, sino que también
+          permite que otros sistemas procesen esta información de manera más
+          eficiente.
+        </p>
       </$CardDef>
     </$FMD>
   );

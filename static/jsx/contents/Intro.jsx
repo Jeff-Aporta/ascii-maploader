@@ -8,11 +8,7 @@ function _intro() {
 
   return (
     <$FMD>
-      <$index
-        label="Bienvenido"
-        variant="h1"
-        className="nowrap"
-      >
+      <$index label="Bienvenido" variant="h1" className="nowrap">
         {titulo}
       </$index>
       <$$h />
@@ -104,7 +100,9 @@ function _intro() {
           ```box npm install ascii-maploader ```
           <$h />
           En tu código JavaScript, importa el módulo con:
-          <$PR lang="javascript">import asciiMap from "ascii-maploader";</$PR>
+          <$PR lang="javascript" elevation={0}>
+            import asciiMap from "ascii-maploader";
+          </$PR>
         </$F>
       </Card>
     );
@@ -119,17 +117,15 @@ function _intro() {
           mediante la URL: ```url
           https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js
           ``` En tu código HTML.
-          <$Copy>
-            <$PR lang="html">
-              {[
-                `<script`,
-                `   type='text/javascript'`,
-                `   src='${urlCDN}'`,
-                `>`,
-                `</script>`,
-              ].join("\n")}
-            </$PR>
-          </$Copy>
+          <$PR lang="html" elevation={0}>
+            {[
+              `<script`,
+              `   type='text/javascript'`,
+              `   src='${urlCDN}'`,
+              `>`,
+              `</script>`,
+            ].join("\n")}
+          </$PR>
           Esto permitirá que tu aplicación cargue y utilice la funcionalidad de
           **ASCII Maploader** para estructurar y gestionar las dependencias de
           tu proyecto de manera programada y visual.
