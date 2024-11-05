@@ -11,7 +11,7 @@ function _cascade() {
       En lugar de escribir manualmente cada etiqueta de HTML para cargar tus
       dependencias, puedes usar un flujo de comandos que se encadenan de manera
       ordenada y lógica, lo que imita la estructura de un árbol de archivos.
-      <$PR lang="html" className="pad-10px mh-20px" style={{ color: "Khaki" }}>
+      <$PR lang="html" className="pad-10px mh-20px">
         {ex}
       </$PR>
       <$CardDef title=".tree(name_root)">
