@@ -49,15 +49,55 @@ function _intro() {
       </div>
       <$$h />
       <$hr />
-      <$ variant="h3">
-        <$secundario>Instalación</$secundario>
-      </$>
       <$h />
-      #### CDN
-      <CDN />
-      <$h />
-      #### npm
-      <Npm />
+      <$index label="Instalación">
+        <Card className="pad-10px">
+          <$ variant="h3">Instalación</$>
+          <$hr />
+          <$ variant="h4">CDN</$>
+          <p>
+            Para usarlo en tu proyecto, puedes integrarlo de forma sencilla
+            mediante la URL en tu código HTML.
+          </p>
+          <$BasicTabs
+            onIndexChange={(e, i) => i == 1 && setTimeout(PR.prettyPrint)}
+            style={{ border: "1px solid rgba(128, 128, 128, 0.2)" }}
+            children={{
+              DEPENDENCIAS: (
+                <$CardCopy
+                  elevation={0}
+                  style={{
+                    padding: "40px 10px 40px 10px",
+                    color: "hotpink",
+                  }}
+                >
+                  {urlCDN}
+                </$CardCopy>
+              ),
+              HTML: (
+                <$PR elevation={0} lang="html">
+                  {[
+                    `\u003Cscript type="text/javascript"`,
+                    `  src="${urlCDN}"`,
+                    `>\u003C/script>`,
+                  ].join("\n")}
+                </$PR>
+              ),
+            }}
+          />
+          <$h />
+          <$ variant="h4">npm</$>
+          <p>
+            Ejecuta el siguiente comando para agregar ASCII Map Loader en su
+            proyecto:
+          </p>
+          <$CardCopy elevation={0} className="pad-20px">
+            <span className="c-yellow">npm</span> install{" "}
+            <strong>ascii-maploader</strong>{" "}
+            <span className="c-gray">--save</span>
+          </$CardCopy>
+        </Card>
+      </$index>
       <$$h />
       <$hr />
       ### Funciones del módulo
@@ -92,45 +132,39 @@ function _intro() {
 
   function Npm() {
     return (
-      <Card className="pad-10px">
-        <$F>
-          <$h />
-          Para instalarlo, ejecuta el siguiente comando en tu terminal:
-          <$h />
-          ```box npm install ascii-maploader ```
-          <$h />
-          En tu código JavaScript, importa el módulo con:
-          <$PR lang="javascript" elevation={0}>
-            import asciiMap from "ascii-maploader";
-          </$PR>
-        </$F>
-      </Card>
+      <$CardF className="pad-10px">
+        <$h />
+        Para instalarlo, ejecuta el siguiente comando en tu terminal:
+        <$h />
+        ```box npm install ascii-maploader ```
+        <$h />
+        En tu código JavaScript, importa el módulo con:
+        <$PR lang="javascript" elevation={0}>
+          import asciiMap from "ascii-maploader";
+        </$PR>
+      </$CardF>
     );
   }
 
   function CDN() {
     return (
-      <Card className="pad-10px">
-        <$F>
-          <$h />
-          Para usarlo en tu proyecto, puedes integrarlo de forma sencilla
-          mediante la URL: ```url
-          https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js
-          ``` En tu código HTML.
-          <$PR lang="html" elevation={0}>
-            {[
-              `<script`,
-              `   type='text/javascript'`,
-              `   src='${urlCDN}'`,
-              `>`,
-              `</script>`,
-            ].join("\n")}
-          </$PR>
-          Esto permitirá que tu aplicación cargue y utilice la funcionalidad de
-          **ASCII Maploader** para estructurar y gestionar las dependencias de
-          tu proyecto de manera programada y visual.
-        </$F>
-      </Card>
+      <$CardF className="pad-10px">
+        Para usarlo en tu proyecto, puedes integrarlo de forma sencilla mediante
+        la URL: ```url
+        https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js
+        ``` En tu código HTML.
+        <$PR lang="html" elevation={0}>
+          {[
+            `<script`,
+            `   type='text/javascript'`,
+            `   src='${urlCDN}'`,
+            `></script>`,
+          ].join("\n")}
+        </$PR>
+        Esto permitirá que tu aplicación cargue y utilice la funcionalidad de
+        **ASCII Maploader** para estructurar y gestionar las dependencias de tu
+        proyecto de manera programada y visual.
+      </$CardF>
     );
   }
 }

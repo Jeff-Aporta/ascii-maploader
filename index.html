@@ -24,11 +24,17 @@
         `);
       } else {
         asciiMap
-          .tree("static/jsx")
-          .subDir("contents", (contents) => {
-            contents.jsx("cascade", "intro", "learn", "string");
+          .tree("static")
+          .subDir("css", (css) => {
+            css.css("prov.css");
           })
-          .jsx("custom_components", "initApp")
+          .subDir("jsx", (jsx) => {
+            jsx
+              .jsx("custom_components", "initApp")
+              .subDir("contents", (contents) => {
+                contents.jsx("cascade", "intro", "learn", "string");
+              });
+          })
           .writehtml();
       }
     </script>

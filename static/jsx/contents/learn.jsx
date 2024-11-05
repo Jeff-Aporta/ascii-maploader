@@ -29,9 +29,9 @@ function _learn() {
       Imagina que estás organizando un proyecto web, y para ello, decides
       estructurar tus archivos de manera ordenada. Este es un ejemplo de cómo
       podría verse el árbol de carga de dependencias de tu proyecto:
-      <$Card className="pad-10px mh-20px" style={{ color: "Khaki" }}>
+      <$CardCopy className="pad-10px mh-20px" style={{ color: "Khaki" }}>
         <pre>{ex}</pre>
-      </$Card>
+      </$CardCopy>
       <$h />
       Cada uno de los archivos en este árbol de directorios puede ser
       referenciado en un documento HTML de la siguiente manera:
