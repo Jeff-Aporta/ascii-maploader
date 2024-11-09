@@ -58,6 +58,22 @@ import asciiMap from "ascii-maploader";
 
 Incluye un gestor que facilita la vinculación a bibliotecas populares como React y Babel.
 
+```javascript
+/*
+  Dependencias 
+    - react 18.3.1
+    - babel 7.25.5
+    - MaterialUI 5.16.7 
+    - FontAwesome 6.4.2
+*/
+asciiMap.CLI.react_mui_fa(); 
+
+//Dependencia fluid CSS
+//https://github.com/Jeff-Aporta/fluid-css
+
+asciiMap.CLI.fluidCSS();
+```
+
 ### Funciones de Conversión
 
 - **html**: Retorna un arreglo de etiquetas `<link>` y `<script>` que representan las dependencias.
