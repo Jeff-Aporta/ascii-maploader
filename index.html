@@ -23,9 +23,6 @@
       } else {
         asciiMap
           .tree("static")
-          .subDir("css", (css) => {
-            css.css("prov.css");
-          })
           .subDir("jsx", (jsx) => {
             jsx
               .jsx("custom_components", "initApp")
