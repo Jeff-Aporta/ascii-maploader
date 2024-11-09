@@ -36,7 +36,7 @@ Esto permitirá que tu aplicación utilice las funcionalidades de **ASCII Map Lo
 Si prefieres usar npm, ejecuta el siguiente comando en tu terminal:
 
 ```bash
-npm install ascii-maploader
+npm install ascii-maploader --save
 ```
 
 Luego, en tu código JavaScript, importa el módulo con:
