@@ -2,6 +2,6 @@ import CLI from "./modules/CLI.mjs";
 import json from "./modules/json.mjs";
 import tree from "./modules/treeAscii.mjs";
 
-import { html, writehtml } from "./modules/html.mjs";
+import { html, writehtml, writenodes } from "./modules/html.mjs";
 
-export { writehtml, html, json, tree, CLI };
+export { writehtml, writenodes, html, json, tree, CLI };

@@ -9,5 +9,5 @@ await build_rollup();
 
 merger({
   folderRoot: "./static/jsx",
-  output: "./static/js/app.client.merged.min.js",
+  output: "./static/js/appdoc.client.merged.min.js",
 });

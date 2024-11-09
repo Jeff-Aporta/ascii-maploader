@@ -98,8 +98,7 @@ class folder {
   defer(...name) {
     this.#prepNames(name).forEach((n) => {
       this.#file(
-        `${this.web ? decor.JS_WEB : decor.JS} ${forceEnd(n, ".js")} ${
-          decor.defer
+        `${this.web ? decor.JS_WEB : decor.JS} ${forceEnd(n, ".js")} ${decor.defer
         }`
       );
     });

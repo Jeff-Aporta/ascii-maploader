@@ -19,9 +19,7 @@
     <script>
       asciiMap.CLI.designSysCliRender_DocuDesignPR();
       if (window.location.href.includes("github")) {
-        asciiMap.writehtml(`
-          📄 static/js/app.client.merged.min.js
-        `);
+        asciiMap.writenodes("static/js/appdoc.client.merged.min.js");
       } else {
         asciiMap
           .tree("static")
