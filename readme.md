@@ -9,7 +9,7 @@
         <br/>
         <br/>
         <p align="center">
-            <img src="static/img/logo.jpeg" width="250" height="250" />
+            <img src="static/img/thumb.png" width="250" height="250" />
         </p>
     </a>
 </h2>

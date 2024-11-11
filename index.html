@@ -11,13 +11,24 @@
       property="og:description"
       content="Carga dependencias JS, JSX o CSS con dibujos ASCII o estructura cascada"
     />
-    <link rel="icon" type="image/png" href="static/img/icon64x64.png" />
-    <meta property="og:image" content="static/img/logo.jpeg" />
-    <link rel="apple-touch-icon" href="static/img/icon64x64.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://jeff-aporta.github.io/ascii-maploader/static/img/icon64x64.png"
+    />
+    <meta
+      property="og:image"
+      content="https://jeff-aporta.github.io/ascii-maploader/static/img/thumb.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://jeff-aporta.github.io/ascii-maploader/static/img/icon64x64.png"
+    />
 
     <script src="static/js/index.all.min.js"></script>
     <script>
       asciiMap.CLI.designSysCliRender_DocuDesignPR();
+
       if (window.location.href.includes("github")) {
         asciiMap.writenodes("static/js/appdoc.client.merged.min.js");
       } else {
