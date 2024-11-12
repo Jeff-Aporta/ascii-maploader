@@ -23,6 +23,22 @@ function _intro() {
       />
       <$$h />
       <$hr />
+      <$$h />
+      <_$testing
+        src_params_iife={{
+          url: "https://jeff-aporta.github.io/ascii-maploader/static/js/index.all.min.js",
+          name: "asciiMap",
+          comment: "{parseCSS: ƒ, insertStyle: ƒ} --> all OK!",
+        }}
+        src_params_module={{
+          url: "https://jeff-aporta.github.io/ascii-maploader/app/index.mjs",
+          name: "asciiMap",
+          comment: "{parseCSS: ƒ, insertStyle: ƒ} --> all OK!",
+        }}
+      />
+      <$$h />
+      <$hr />
+      <$$h />
       ### Funciones del módulo
       <$$h />
       <$ variant="h8">

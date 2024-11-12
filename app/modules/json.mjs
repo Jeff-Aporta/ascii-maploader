@@ -1,5 +1,4 @@
 import { decor, ignore, lvl } from "./ascii-colection.mjs";
-
 import { forceEnd } from "./tools.mjs";
 
 export default json;

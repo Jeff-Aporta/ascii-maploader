@@ -1,5 +1,4 @@
 import json from "./json.mjs";
-
 import { decor } from "./ascii-colection.mjs";
 
 export { renderizer, file_render };

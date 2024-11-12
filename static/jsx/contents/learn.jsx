@@ -1,8 +1,5 @@
 function _learn() {
-  setTimeout(PR.prettyPrint);
-
   const titulo = "Lenguaje de dependencias";
-
   const ex = loadStringsSync("static/jsx/fragmentos/frag-01.txt");
 
   return (

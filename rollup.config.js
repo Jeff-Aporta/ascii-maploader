@@ -8,5 +8,5 @@ export default {
     format: "iife",
     name: "asciiMap",
   },
-  plugins: [resolve({ extensions: [".mjs", ".js"] }), terser()],
+  plugins: [resolve({ extensions: [".mjs", ".js"] }), terser()]
 };
