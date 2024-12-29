@@ -1,6 +1,4 @@
 function _intro() {
-  setTimeout(PR.prettyPrint);
-
   return (
     <$FMD>
       <_$Bienvenido name_app="ASCII Map Loader" img_url="static/img/thumb.png">

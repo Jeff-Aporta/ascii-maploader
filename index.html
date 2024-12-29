@@ -33,6 +33,7 @@
       if (window.location.href.includes("github")) {
         asciiMap.writenodes("static/js/appdoc.client.merged.min.js");
       } else {
+        asciiMap.tree().jsx("index").writehtml();
         asciiMap
           .tree("static")
           .subDir("jsx", (jsx) => {

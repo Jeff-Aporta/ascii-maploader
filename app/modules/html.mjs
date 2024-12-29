@@ -33,6 +33,7 @@ function writenodes(...nodes) {
 
 function html(asciiMaploader) {
   const lines = [];
+
   renderizer({
     asciiMaploader,
     onFile: ({ node, path_acumulated }) => {
@@ -45,5 +46,28 @@ function html(asciiMaploader) {
       );
     },
   });
-  return lines;
+
+  return lines.map(protocolReturn);
+
+  // DIC/2024 (función creada para evitar errores en las rutas raíz)
+  function protocolReturn(line) {
+    // cesc es una combinación que protege los doble slash de los protocolos web
+    const cesc = "&" + Math.random().toString(30).replace("0.", "") + "&";
+    let p = protectEsc(line);
+    p = deleteDoubleSlash(p);
+    return unprotectEsc(p);
+
+    function unprotectEsc(s) {
+      return s.replace(cesc, "://");
+    }
+
+    function protectEsc(s) {
+      return s.replace("://", cesc);
+    }
+
+    function deleteDoubleSlash(s) {
+      return s.replaceAll("//", "/")
+    }
+  }
+  
 }

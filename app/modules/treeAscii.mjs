@@ -144,53 +144,65 @@ class folder {
   }
 
   toString(routes = false) {
-    if (this.#content.length === 0) {
+    const THIS = this;
+    if (THIS.#content.length == 0) {
       return "";
     }
     if (routes) {
+      const R = stringOfRoutes();
+      return R
+    }
+    const A = stringTreeAsciiMap();
+    return A
+
+
+    function stringOfRoutes() {
       const lines = [
-        this.#path,
-        this.#content
-          .map((e) =>
-            e instanceof folder ? e.toString(true) : [this.#path, e].join("/")
+        THIS.#path,
+        THIS.#content
+          .map((e) => e instanceof folder ? e.toString(true) : [THIS.#path, e].filter(Boolean).join("/")
           )
           .join("\n"),
       ].filter(Boolean);
+
       return lines.join("\n");
     }
-    const h = (() => {
-      const F = this.ignore
-        ? decor.noDIR
-        : (() => (this.web ? decor.DIR_WEB : decor.DIR))();
-      if (this.lvls) {
-        return "│   ".repeat(this.lvls - 1) + `├──${F} ${this.name}`;
-      }
-      return `➤${F} ${this.name}`;
-    })();
-    const sufix = "│   ".repeat(this.lvls);
 
-    const sep = "│   ".repeat(this.lvls + 1);
+    function stringTreeAsciiMap() {
+      const h = (() => {
+        const F = THIS.ignore
+          ? decor.noDIR
+          : (() => (THIS.web ? decor.DIR_WEB : decor.DIR))();
+        if (THIS.lvls) {
+          return "│   ".repeat(THIS.lvls - 1) + `├──${F} ${THIS.name}`;
+        }
+        return `➤${F} ${THIS.name}`;
+      })();
+      const sufix = "│   ".repeat(THIS.lvls);
 
-    let lines = [
-      h,
-      sep,
-      this.#content
-        .map((e, i, arr) => {
-          let s;
-          if (e instanceof folder) {
-            s = `${sep}\n${e.toString()}`;
-          } else {
-            s = `${sufix}├──${e}`;
-          }
-          if (i === arr.length - 1 && !(e instanceof folder)) {
-            s = s.replaceAll("├", "└");
-          }
-          return s;
-        })
-        .join("\n"),
-    ].filter(Boolean);
+      const sep = "│   ".repeat(THIS.lvls + 1);
 
-    return lines.join("\n");
+      let lines = [
+        h,
+        sep,
+        THIS.#content
+          .map((e, i, arr) => {
+            let s;
+            if (e instanceof folder) {
+              s = `${sep}\n${e.toString()}`;
+            } else {
+              s = `${sufix}├──${e}`;
+            }
+            if (i === arr.length - 1 && !(e instanceof folder)) {
+              s = s.replaceAll("├", "└");
+            }
+            return s;
+          })
+          .join("\n"),
+      ].filter(Boolean);
+
+      return lines.join("\n");
+    }
   }
 
   writehtml() {
@@ -213,8 +225,8 @@ class folder {
     if (this.parent) {
       return this.parent.end();
     }
-    return this.toString()
-      .split("\n")
+
+    return this.toString().split("\n")
       .map((l, i, arr) => {
         let chrs = l;
         const next = arr[i + 1] ?? "";
@@ -230,6 +242,6 @@ class folder {
           return str.substring(0, index) + chr + str.substring(index + 1);
         }
       })
-      .join("\n");
+      .join("\n");;
   }
 }
