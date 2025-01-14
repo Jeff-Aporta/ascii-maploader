@@ -39,7 +39,7 @@ function html(asciiMaploader) {
     onFile: ({ node, path_acumulated }) => {
       lines.push(
         file_render({
-          archivo: [path_acumulated, node.archivo].filter((e) => e).join("/"),
+          archivo: [path_acumulated, node.archivo].filter(Boolean).join("/"),
           type: node.type,
           render: render_html,
         })
@@ -54,6 +54,7 @@ function html(asciiMaploader) {
     // cesc es una combinación que protege los doble slash de los protocolos web
     const cesc = "&" + Math.random().toString(30).replace("0.", "") + "&";
     let p = protectEsc(line);
+    p = deleteVoidRoot(p);
     p = deleteDoubleSlash(p);
     return unprotectEsc(p);
 
@@ -68,6 +69,10 @@ function html(asciiMaploader) {
     function deleteDoubleSlash(s) {
       return s.replaceAll("//", "/")
     }
+
+    function deleteVoidRoot(s) {
+      return s.replaceAll("|/", "")
+    }
   }
-  
+
 }

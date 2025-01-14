@@ -7,7 +7,7 @@ import { decor } from "./ascii-colection.mjs";
 export default tree;
 
 function tree(name) {
-  return new folder(name ?? "/");
+  return new folder(name ?? "|");
 }
 
 class folder {
