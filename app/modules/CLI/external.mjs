@@ -11,6 +11,7 @@ export default {
   react_mui_fa,
   prettier_codemirror,
   codemirror_theme_name,
+  FileSaver_jszip
 };
 
 function react_mui_fa() {
@@ -47,6 +48,12 @@ function codemirror_theme_name(name) {
     _codemirror_theme_name_ = name;
   }
   return _codemirror_theme_name_;
+}
+
+function FileSaver_jszip() {
+  tree("https://cdnjs.cloudflare.com/ajax/libs/")
+    .add("jszip/3.10.1/jszip.min.js", "FileSaver.js/2.0.5/FileSaver.min.js")
+    .writehtml();
 }
 
 function prettier_codemirror(theme_name) {
