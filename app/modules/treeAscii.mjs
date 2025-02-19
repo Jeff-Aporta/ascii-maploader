@@ -62,7 +62,7 @@ class Node {
     return this.#content.find((f) => f.name == name);
   }
 
-  newBranch({ name, generator, ignore = false }) {
+  newBranch(name, generator, ignore = false) {
     return this.subDir(name, generator, ignore);
   }
 
