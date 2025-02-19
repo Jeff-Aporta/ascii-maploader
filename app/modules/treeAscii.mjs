@@ -47,6 +47,10 @@ class folder {
     return name.map((n) => n.trim());
   }
 
+  getSubDir(name){
+    return this.#content.find((f) => f.name == name);
+  }
+
   subDir(name, generator, ignore = false) {
     if (!name) {
       throw new Error("asciiMap: La subcarpeta no tiene nombre");
