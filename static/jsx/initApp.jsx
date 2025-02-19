@@ -93,13 +93,13 @@ function initApp() {
         lbl: "Uso",
       },
       {
-        lbl: "Modo Cascada",
+        lbl: "Objeto del controlador",
         id: "cascade",
         content: () => <_cascade />,
         i: "fa-solid fa-code",
       },
       {
-        lbl: "Inserción por cadena",
+        lbl: "Lenguaje interpretado",
         id: "string",
         content: () => <_string />,
         i: "fa-solid fa-code",

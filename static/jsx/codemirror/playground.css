@@ -1,0 +1,90 @@
+.codemirror-instance {
+  --theme: unset;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  height: max-content;
+
+  border: 1px solid #224;
+
+  &.light {
+    .CodeMirror {
+      filter: invert() hue-rotate(180deg) saturate(2) brightness(1.2);
+    }
+    #botones-control {
+      * {
+        border-color: mediumblue;
+        color: white;
+        filter: brightness(2) saturate(0.8);
+      }
+    }
+  }
+
+  &.estilo-fila-mini {
+    overflow: hidden;
+  }
+
+  iframe {
+    border: 1px solid #224;
+  }
+
+  #ejecutar-codigo {
+    display: flex;
+    right: 10px;
+    top: 10px;
+    scale: 0.7;
+    background-color: darkblue;
+    border: 4px solid black;
+    box-sizing: content-box;
+    width: 40px;
+    aspect-ratio: 1;
+    z-index: 1;
+  }
+
+  .editor-container {
+    position: relative;
+    height: 400px;
+
+    .CodeMirror-scroll {
+      overflow-x: auto;
+    }
+  }
+
+  .CodeMirror {
+    position: absolute;
+    left: 5px;
+    top: 10px;
+    width: 98%;
+    height: 95%;
+    border: 2px solid midnightblue;
+    font-size: 14px;
+    border-radius: 5px;
+  }
+
+  #botones-control {
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+.MuiBox-root {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.op-0 {
+  opacity: 0;
+}
+
+.d-none {
+  display: none;
+}
+
+.fullWidth {
+  width: 100%;
+}

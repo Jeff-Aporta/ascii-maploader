@@ -7,10 +7,11 @@ import { decor } from "./ascii-colection.mjs";
 export default tree;
 
 function tree(name) {
-  return new folder(name ?? "|");
+  return new Node(name ?? "|");
 }
 
-class folder {
+
+class Node {
   #content = [];
 
   constructor(params) {
@@ -43,26 +44,43 @@ class folder {
     return [this.parent.pathroot, this.name].filter(Boolean).join("/");
   }
 
-  #prepNames(name) {
-    return name.map((n) => n.trim());
+  #prepare_names(names) {
+    return names.map((n) => n.trim());
   }
 
-  getSubDir(name){
+  #createNode(name, ignore = false) {
+    let tree = new Node({ name, parent: this, ignore, web: this.web });
+    this.#content.push(tree);
+    return tree;
+  }
+
+  firstBranch(name) {
+    return this.findFirstBranch(name) ?? this.#createNode(name, false);
+  }
+
+  findFirstBranch(name) {
     return this.#content.find((f) => f.name == name);
   }
 
+  newBranch({ name, generator, ignore = false }) {
+    return this.subDir(name, generator, ignore);
+  }
+
+  /**
+   * @deprecated
+   * @description [ES] Esta función está obsoleta. Usa `branch` en su lugar.
+   * @description [EN] This function is deprecated. Use `branch` instead.
+   */
   subDir(name, generator, ignore = false) {
     if (!name) {
-      throw new Error("asciiMap: La subcarpeta no tiene nombre");
+      throw new Error("asciiMap subDir: La subcarpeta no tiene nombre");
     }
-    let tree = new folder({ name, parent: this, ignore, web: this.web });
-    this.#content.push(tree);
-    generator(tree);
+    generator(this.#createNode(name, ignore));
     return this;
   }
 
   add(...name) {
-    this.#prepNames(name).forEach((n) => {
+    this.#prepare_names(name).forEach((n) => {
       const ext = n.split(".").pop();
       switch (ext) {
         case "js":
@@ -86,23 +104,24 @@ class folder {
   }
 
   css(...name) {
-    this.#prepNames(name).forEach((n) => {
+    this.#prepare_names(name).forEach((n) => {
       this.#file(`${decor.CSS} ${forceEnd(n, ".css")}`);
     });
     return this;
   }
 
   js(...name) {
-    this.#prepNames(name).forEach((n) => {
+    this.#prepare_names(name).forEach((n) => {
       this.#file(`${this.web ? decor.JS_WEB : decor.JS} ${forceEnd(n, ".js")}`);
     });
     return this;
   }
 
   defer(...name) {
-    this.#prepNames(name).forEach((n) => {
+    this.#prepare_names(name).forEach((n) => {
       this.#file(
-        `${this.web ? decor.JS_WEB : decor.JS} ${forceEnd(n, ".js")} ${decor.defer
+        `${this.web ? decor.JS_WEB : decor.JS} ${forceEnd(n, ".js")} ${
+          decor.defer
         }`
       );
     });
@@ -110,7 +129,7 @@ class folder {
   }
 
   module(...name) {
-    this.#prepNames(name).forEach((n) => {
+    this.#prepare_names(name).forEach((n) => {
       if (!n.endsWith("js")) {
         n = forceEnd(n, ".js");
       }
@@ -120,14 +139,14 @@ class folder {
   }
 
   mjs(...name) {
-    this.#prepNames(name).forEach((n) => {
+    this.#prepare_names(name).forEach((n) => {
       this.#file(`${decor.js} ${forceEnd(n, ".js")}`);
     });
     return this;
   }
 
   jsx(...name) {
-    this.#prepNames(name).forEach((n) => {
+    this.#prepare_names(name).forEach((n) => {
       this.#file(
         `${this.web ? decor.JSX_WEB : decor.JSX} ${forceEnd(n, ".jsx")}`
       );
@@ -136,7 +155,7 @@ class folder {
   }
 
   jsxcss(...name) {
-    this.#prepNames(name).forEach((n) => {
+    this.#prepare_names(name).forEach((n) => {
       this.#file(`${decor.JSXCSS} ${n}`);
     });
     return this;
@@ -154,17 +173,19 @@ class folder {
     }
     if (routes) {
       const R = stringOfRoutes();
-      return R
+      return R;
     }
     const A = stringTreeAsciiMap();
-    return A
-
+    return A;
 
     function stringOfRoutes() {
       const lines = [
         THIS.#path,
         THIS.#content
-          .map((e) => e instanceof folder ? e.toString(true) : [THIS.#path, e].filter(Boolean).join("/")
+          .map((e) =>
+            e instanceof Node
+              ? e.toString(true)
+              : [THIS.#path, e].filter(Boolean).join("/")
           )
           .join("\n"),
       ].filter(Boolean);
@@ -192,12 +213,12 @@ class folder {
         THIS.#content
           .map((e, i, arr) => {
             let s;
-            if (e instanceof folder) {
+            if (e instanceof Node) {
               s = `${sep}\n${e.toString()}`;
             } else {
               s = `${sufix}├──${e}`;
             }
-            if (i === arr.length - 1 && !(e instanceof folder)) {
+            if (i === arr.length - 1 && !(e instanceof Node)) {
               s = s.replaceAll("├", "└");
             }
             return s;
@@ -230,7 +251,8 @@ class folder {
       return this.parent.end();
     }
 
-    return this.toString().split("\n")
+    return this.toString()
+      .split("\n")
       .map((l, i, arr) => {
         let chrs = l;
         const next = arr[i + 1] ?? "";
@@ -246,6 +268,6 @@ class folder {
           return str.substring(0, index) + chr + str.substring(index + 1);
         }
       })
-      .join("\n");;
+      .join("\n");
   }
 }

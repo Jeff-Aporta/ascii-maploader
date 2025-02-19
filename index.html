@@ -29,21 +29,28 @@
     <script type="module" src="app/index.mjs"></script>
     <script>
       asciiMap.CLI.designSysCliRender_DocuDesignPR();
+      
 
       if (window.location.href.includes("github")) {
         asciiMap.writenodes("static/js/appdoc.client.merged.min.js");
       } else {
-        asciiMap.tree().jsx("index").writehtml();
-        asciiMap
-          .tree("static")
-          .subDir("jsx", (jsx) => {
-            jsx
+        const root = asciiMap.tree();
+        
+        root.jsx("index").writehtml();
+        root.newBranch("static", (static) => {
+          static.newBranch("jsx", (jsxfolder) => {
+            jsxfolder
               .jsx("custom_components", "initApp")
-              .subDir("contents", (contents) => {
+              .newBranch("contents", (contents) => {
                 contents.jsx("cascade", "intro", "learn", "string");
+              })
+              .newBranch("codemirror", (contents) => {
+                contents.jsxcss("codemirror");
               });
-          })
-          .writehtml();
+          });
+        });
+
+        root.writehtml();
       }
     </script>
   </head>
