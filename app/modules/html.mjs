@@ -3,12 +3,42 @@ import { forceEnd } from "./tools.mjs";
 
 export { writehtml, writenodes, render_html, html };
 
+const alert_icon = "\u26A0"
+
 function render_html({ archivo, type, ext, defer }) {
   if (ext == ".css") {
-    return `<link rel="stylesheet" href="${forceEnd(archivo, ext)}">`;
+    return `<link rel="stylesheet" href="${forceEnd(archivo, ext)}"
+    ${onerror("href")}
+    >`;
   } else {
-    return `<script type="${type}" src="${forceEnd(archivo, ext)}" ${defer ? "defer" : ""
-      }><\/script>`;
+    return `<script type="${type}" src="${forceEnd(archivo, ext)}" ${
+      defer ? "defer" : ""
+    }
+      ${onerror("src")}
+    ><\/script>`;
+  }
+
+  function onerror(atr) {
+    const sentences = [
+      `
+        console.log(
+          "%c${alert_icon} asciiMap: No se pudo cargar: this.${atr}",
+          "
+            color: orange; 
+            font-weight: bolder
+
+            border: 1px solid gray; 
+            padding: 5px; 
+
+            text-shadow: 2px 2px 0px gray;
+          "
+        );
+      `,
+      `this.remove()`,
+    ].map((s) => s.replace(/\s+/g, " "));
+    return `
+      onerror="${sentences.join("; ")}"
+    `.trim();
   }
 }
 
@@ -21,13 +51,18 @@ function writenodes(...nodes) {
   if (nodes.length == 0) {
     return;
   }
-  const s = html(nodes.filter(Boolean).map(n => {
-    n = n.trim();
-    if (n.endsWith(".css")) {
-      return `🎨 ${n}`
-    }
-    return `📄 ${n}`
-  }).join("\n")).join("\n");
+  const s = html(
+    nodes
+      .filter(Boolean)
+      .map((n) => {
+        n = n.trim();
+        if (n.endsWith(".css")) {
+          return `🎨 ${n}`;
+        }
+        return `📄 ${n}`;
+      })
+      .join("\n")
+  ).join("\n");
   document.write(s);
 }
 
@@ -67,12 +102,11 @@ function html(asciiMaploader) {
     }
 
     function deleteDoubleSlash(s) {
-      return s.replaceAll("//", "/")
+      return s.replaceAll("//", "/");
     }
 
     function deleteVoidRoot(s) {
-      return s.replaceAll("|/", "")
+      return s.replaceAll("|/", "");
     }
   }
-
 }
