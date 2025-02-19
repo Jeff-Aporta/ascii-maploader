@@ -68,8 +68,8 @@ class Node {
 
   /**
    * @deprecated
-   * @description [ES] Esta función está obsoleta. Usa `branch` en su lugar.
-   * @description [EN] This function is deprecated. Use `branch` instead.
+   * @description [ES] Esta función está obsoleta. Usa `newBranch` en su lugar.
+   * @description [EN] This function is deprecated. Use `newBranch` instead.
    */
   subDir(name, generator, ignore = false) {
     if (!name) {
