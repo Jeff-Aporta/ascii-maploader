@@ -61,7 +61,7 @@ function prettier_codemirror(theme_name) {
     codemirror_theme_name(theme_name);
   }
   tree("https://")
-    .subDir("unpkg.com/prettier@2.8.8", (pretier) => {
+    .newBranch("unpkg.com/prettier@2.8.8", (pretier) => {
       pretier.js(
         "standalone.js",
         "parser-html.js",
@@ -69,13 +69,13 @@ function prettier_codemirror(theme_name) {
         "parser-babel.js"
       );
     })
-    .subDir(
+    .newBranch(
       "cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.18",
       (codemirror) => {
         codemirror
           .js("codemirror.min")
           .css("codemirror.min.css", `theme/${codemirror_theme_name()}.min.css`)
-          .subDir("mode", (mode) => {
+          .newBranch("mode", (mode) => {
             mode.js(
               "xml/xml.min.js",
               "javascript/javascript.min.js",

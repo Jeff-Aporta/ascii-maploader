@@ -45,13 +45,17 @@ function designSysCliRender_DocuDesign_body() {
   `);
 }
 
+function PR(){
+  writenodes(
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"
+  );
+}
+
 function designSysCliRender_DocuDesignPR() {
   designSysCliRender_DocuDesign();
   prettier_codemirror();
   FileSaver_jszip();
-  writenodes(
-    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"
-  );
+  PR();
 }
 
 function designSysCliRender_DocuDesign() {

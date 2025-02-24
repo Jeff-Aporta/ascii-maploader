@@ -4,11 +4,7 @@ function _learn() {
 
   return (
     <$FMD>
-      <$index
-        label="Empecemos"
-        variant="h2"
-        className="nowrap"
-      >
+      <$index label="Empecemos" variant="h2" className="nowrap">
         {titulo}
       </$index>
       <$$h />
@@ -33,7 +29,16 @@ function _learn() {
       Cada uno de los archivos en este árbol de directorios puede ser
       referenciado en un documento HTML de la siguiente manera:
       <$PR lang="html" className="pad-10px mh-20px" style={{ color: "Khaki" }}>
-        {asciiMap.html(ex).join("\n")}
+        {asciiMap
+          .html(ex)
+          .join("\n")
+          .replace(/onerror=".*"/g, "")
+          .replace(/\s+/g, " ")
+          .replace(/\s*</g, "<")
+          .replace(/\s*>/g, ">")
+          .replaceAll(">", ">\n")
+          .replace(/>\s*<\//g, "></")
+          }
       </$PR>
       Ahora, analiza ambas formas de organizar la carga de dependencias. La
       estructura de carpetas y archivos proporciona una representación visual
