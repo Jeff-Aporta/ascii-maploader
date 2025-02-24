@@ -4,6 +4,7 @@ import { writenodes } from "../html.mjs";
 let _codemirror_theme_name_ = "material-ocean";
 
 export default {
+  PR,
   mui,
   react,
   react_mui,
@@ -13,6 +14,12 @@ export default {
   codemirror_theme_name,
   FileSaver_jszip
 };
+
+function PR() {
+  writenodes(
+    "https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"
+  );
+}
 
 function react_mui_fa() {
   react_mui();
