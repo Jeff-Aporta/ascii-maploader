@@ -1,7 +1,7 @@
 import external from "./external.mjs";
 import { writenodes } from "../html.mjs";
 
-const { react_mui_fa, prettier_codemirror, FileSaver_jszip } = external;
+const { react_mui_fa, prettier_codemirror, FileSaver_jszip, PR } = external;
 
 const jeff_aporta = "https://jeff-aporta.github.io";
 const designsysclirender = join(jeff_aporta, "design-sys-cli-render");
