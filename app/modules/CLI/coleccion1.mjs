@@ -15,14 +15,14 @@ const myUI = {
   playground: () => {
     writenodes(
       ...["editor-en-linea.jsx", "editor-en-linea.css"].map((x) =>
-        join(playgound, "template", x)
+        join(playgound, x)
       )
     );
   },
   playground_template: {
-    html: join(playgound, "iframe.html"),
-    css: join(playgound, "iframe.css"),
-    js: join(playgound, "iframe.js"),
+    html: join(playgound, "template", "iframe.html"),
+    css: join(playgound, "template", "iframe.css"),
+    js: join(playgound, "template", "iframe.js"),
   },
 };
 
