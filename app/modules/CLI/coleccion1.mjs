@@ -8,8 +8,26 @@ const designsysclirender = join(jeff_aporta, "design-sys-cli-render");
 const playgound = join(designsysclirender, `componentes/playground`);
 const DocuDesign = join(designsysclirender, "DocuDesign/static");
 
+const myUI = {
+  DocuDesign: () => designSysCliRender_DocuDesign(),
+  DocuDesignPR: () => designSysCliRender_DocuDesignPR(),
+  DocuDesignBody: () => designSysCliRender_DocuDesign_body(),
+  playground: () => {
+    writenodes(
+      ...["editor-en-linea.jsx", "editor-en-linea.css"].map((x) =>
+        join(playgound, x)
+      )
+    );
+  },
+  playground_template: {
+    html: join(playgound, "iframe.html"),
+    css: join(playgound, "iframe.css"),
+    js: join(playgound, "iframe.js"),
+  },
+};
+
 export default {
-  myUI,
+  myUI: () => myUI,
   JS2CSS,
   fluidCSS,
   designSysCliRender_DocuDesign,
@@ -80,26 +98,8 @@ function designSysCliRender_DocuDesign() {
   react_mui_fa();
   fluidCSS();
   writenodes(
-    ["all.templates.min.js", "all.styles.min.css"].map((x) =>
+    ...["all.templates.min.js", "all.styles.min.css"].map((x) =>
       join(DocuDesign, x)
     )
   );
 }
-
-const myUI = {
-  DocuDesign: () => designSysCliRender_DocuDesign(),
-  DocuDesignPR: () => designSysCliRender_DocuDesignPR(),
-  DocuDesignBody: () => designSysCliRender_DocuDesign_body(),
-  playground: () => {
-    writenodes(
-      ...["editor-en-linea.jsx", "editor-en-linea.css"].map((x) =>
-        join(playgound, x)
-      )
-    );
-  },
-  playground_template: {
-    html: join(playgound, "iframe.html"),
-    css: join(playgound, "iframe.css"),
-    js: join(playgound, "iframe.js"),
-  },
-};

@@ -26,23 +26,25 @@
     />
 
     <script src="static/js/index.all.min.js"></script>
+
     <script>
       asciiMap.CLI.designSysCliRender_DocuDesignPR();
-      
 
       if (window.location.href.includes("github")) {
         asciiMap.writenodes("static/js/appdoc.client.merged.min.js");
       } else {
         const root = asciiMap.tree();
         
-        root.jsx("index").writehtml();
+        console.log(root);
+
+
         root.newBranch("static", (static) => {
           static.newBranch("jsx", (jsxfolder) => {
             jsxfolder
-              .jsx("custom_components", "initApp")
               .newBranch("contents", (contents) => {
                 contents.jsx("cascade", "intro", "learn", "string");
               })
+              .jsx("custom_components", "initApp");
           });
         });
 
