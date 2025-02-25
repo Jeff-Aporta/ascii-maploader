@@ -242,10 +242,6 @@ class Node {
     return json(this.end());
   }
 
-  toMap() {
-    return this.end();
-  }
-
   end() {
     if (this.parent) {
       return this.parent.end();

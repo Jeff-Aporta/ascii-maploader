@@ -3,11 +3,22 @@ import { writenodes } from "../html.mjs";
 
 const { react_mui_fa, prettier_codemirror, FileSaver_jszip, PR } = external;
 
-const jeff_aporta = "https://jeff-aporta.github.io";
+const jeff_aporta = (() => {
+  const urlgithub = "https://jeff-aporta.github.io";
+  if (window.location.href.includes("127.0.0.1")) {
+    return window["jeff-aporta-default"] ?? urlgithub;
+  }
+  return urlgithub;
+})();
 const designsysclirender = join(jeff_aporta, "design-sys-cli-render");
 const playgound = join(designsysclirender, `componentes/playground`);
-const playgound_jsdelivr =
-  "https://cdn.jsdelivr.net/gh/Jeff-Aporta/design-sys-cli-render@main/componentes/playground";
+const playgound_jsdelivr = (() => {
+  return (
+    "https://cdn.jsdelivr.net/gh/Jeff-Aporta/" +
+    "design-sys-cli-render@ed2c2a3dbfb516cd069130882a9ee6c05be7f11a/" +
+    "componentes/playground"
+  );
+})();
 const DocuDesign = join(designsysclirender, "DocuDesign/static");
 
 const myUI = {

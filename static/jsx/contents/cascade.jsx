@@ -1,5 +1,4 @@
 function _cascade() {
-  setTimeout(PR.prettyPrint);
   const titulo = "Modo cascada";
   const ex = loadStringsSync("static/jsx/fragmentos/frag-02.txt");
   return (
@@ -27,13 +26,6 @@ function _cascade() {
         diferentes archivos entre sí.
         <$h />
         Un ejemplo de cómo usar esta función es el siguiente:
-        <Editor_en_linea
-          nombre_proyecto="proyecto-de-prueba-1"
-          plantilla_HTML={asciiMap.CLI.myUI().playground_template.html_jsdelivr}
-          extra_js={() => abrir_consola()}
-          JS={`const my_tree = asciiMap.tree("name-root");console.log(my_tree.toString());`}
-          index={0}
-        />
         <$PR
           elevation={0}
           lang="js"
@@ -50,29 +42,38 @@ function _cascade() {
       <$CardDef title=".css(...filesname)">
         Esta función se utiliza para agregar archivos de estilo en formato .css
         al árbol de tu proyecto. Por ejemplo, puedes escribir:
-        <$PR
-          elevation={0}
-          lang="js"
-        >{`tree.css("style1","style2","style3");`}</$PR>
+        <EjemploConConsola
+          js={`
+            var mapa = asciiMap.tree().css("style1","style2","style3");
+
+            console.log(mapa.toString());
+          `}
+        />
         para incluir varios estilos a la vez.
       </$CardDef>
       <$CardDef title=".js(...filesname)">
         Con esta función, puedes agregar archivos de JavaScript en formato .js
         al árbol. Un ejemplo sería:
-        <$PR
-          elevation={0}
-          lang="js"
-        >{`tree.js("logic1","logic2","logic3");`}</$PR>
+        <EjemploConConsola
+          js={`
+            var mapa = asciiMap.tree().js("logic1","logic2","logic3");
+
+            console.log(mapa.toString());
+          `}
+        />
         donde puedes añadir múltiples archivos de lógica de tu aplicación.
       </$CardDef>
       <$CardDef title=".jsx(...filesname)">
         Similar a la función anterior, esta se usa para agregar archivos de
         JavaScript que contienen sintaxis JSX, comúnmente utilizados con React.
         Por ejemplo, al escribir
-        <$PR
-          elevation={0}
-          lang="js"
-        >{`tree.jsx("react1","react2","react3");`}</$PR>
+        <EjemploConConsola
+          js={`
+            var mapa = asciiMap.tree().jsx("react1","react2","react3");
+
+            console.log(mapa.toString());
+          `}
+        />
         estarás incluyendo varios componentes React en tu árbol.
       </$CardDef>
       Estas funciones simplifican la gestión de archivos en tu proyecto,
@@ -81,19 +82,29 @@ function _cascade() {
       <$hr />
       <$$h />
       #### Ramificación
-      <$CardDef title=".subDir(name_branch, subspace)">
-        permite seleccionar una rama específica en la rama actual.
+      <$CardDef title="tree.newBranch()">
+        permite seleccionar una rama específica en la rama actual, alias alt
+        `subDir`
         <$$h />
         <$ variant="h9">
           <$secundario>Ejemplo</$secundario>
         </$>
-        <$PR elevation={0} lang="js">
-          {[
-            `tree.subDir("name-branch", branch=>{`,
-            `    branch.css("styles").js("script").jsx("App");`,
-            `})`,
-          ].join("\n")}
-        </$PR>
+        <br />
+        <EjemploConConsola
+          js={`
+            var mapa = asciiMap.tree("public").newBranch("ex-branch", branch=>{
+                    branch.css("style").js("script").jsx("App");
+            });
+
+            console.log(mapa.toString());
+          `}
+        />
+      </$CardDef>
+      <$CardDef title="tree.firstBranch()">
+        Busca, si no encuenta entonces la crea
+      </$CardDef>
+      <$CardDef title="tree.findFirstBranch()">
+        Busca, sólo devuelve si encuentra.
       </$CardDef>
       <$$h />
       <$hr />
@@ -109,64 +120,38 @@ function _cascade() {
         archivo HTML, asegurando que todas las dependencias estén correctamente
         integradas en tu página.
       </$CardDef>
-      <$CardDef title=".toString()">
-        devuelve una representación en forma de cadena de texto del árbol de
-        dependencias que has construido. Esta función es útil para visualizar de
-        manera rápida y clara la estructura jerárquica de tus archivos y
-        carpetas.
-        <$h />
-        Por ejemplo, al usar la función de esta forma:
-        <$PR elevation={0} lang="js">
-          {[
-            `asciiMap.tree("public").subDir("ex-branch", branch=>{`,
-            `    branch.css("style").js("script").jsx("App");`,
-            `}).toString()`,
-          ].join("\n")}
-        </$PR>
-        El resultado será una cadena que muestra la organización de tus archivos
-        en un formato que imita la estructura de un árbol de directorios, como
-        el siguiente:
-        <$Copy className="mh-10px pad-10px dark-02">
-          <pre>
-            <code className="c-khaki">
-              {asciiMap
-                .tree("public")
-                .subDir("ex-branch", (branch) => {
-                  branch.css("style").js("script").jsx("App");
-                })
-                .toString()}
-            </code>
-          </pre>
-        </$Copy>
-      </$CardDef>
       <$CardDef title=".toHtml()">
         En lugar de modificar el HTML directamente, esta función retorna un
         arreglo que contiene las cadenas de texto de las etiquetas que se
         deberían incluir en el documento. Esto es útil si deseas manipular o
         revisar las etiquetas antes de insertarlas en el HTML.
         <$h />
-        Por ejemplo, al utilizar la función de esta manera:
-        <$PR elevation={0} lang="js">
-          {[
-            `asciiMap.tree("public").subDir("ex-branch", branch=>{`,
-            `    branch.css("style").js("script").jsx("App");`,
-            `}).toHtml()`,
-          ].join("\n")}
-        </$PR>
-        El resultado será un arreglo que incluye las etiquetas necesarias para
-        cargar los archivos correspondientes:
-        <$PR elevation={0} lang="js">
-          [<br />
-          {asciiMap
-            .tree("public")
-            .subDir("ex-branch", (branch) => {
+        Por ejemplo, al utilizar la función, el resultado será un arreglo que
+        incluye las etiquetas necesarias para cargar los archivos
+        correspondientes:
+        <EjemploConConsola
+          js={`
+            var mapa = asciiMap
+            .tree()
+            .newBranch("ex-branch", (branch) => {
               branch.css("style").js("script").jsx("App");
-            })
-            .toHtml()
-            .map((e) => "  '" + e + "'")
-            .join(",\n")}
-          <br />]
-        </$PR>
+              });
+              
+            var html = removerRuido(mapa.toHtml());
+
+            html.forEach(x => console.log(x));
+
+            function removerRuido(arr_html){ // Opcional
+              return arr_html.map(x => x.replace(/onerror=".*"/g, "")
+                              .replace(/\\s+/g, " ")
+                              .replace(/\\s*</g, "<")
+                              .replace(/\\s*>/g, ">")
+                              .replaceAll(">", ">\\n")
+                              .replace(/>\\s*<\\//g, "></")
+              );
+            }
+          `}
+        />
       </$CardDef>
       <$CardDef title=".toJson()">
         convierte la estructura del árbol de dependencias que has creado en un
@@ -175,33 +160,16 @@ function _cascade() {
         aplicaciones que manejan estructuras JSON o si necesitas realizar
         operaciones adicionales sobre la información.
         <p>Por ejemplo, al utilizar la función de esta manera:</p>
-        <$PR elevation={0} lang="js">
-          {[
-            `asciiMap.tree("public").subDir("ex-branch", branch=>{`,
-            `    branch.css("style").js("script").jsx("App");`,
-            `}).toJson()`,
-          ].join("\n")}
-        </$PR>
-        <p>
-          El resultado será un objeto JSON que representa la jerarquía de tus
-          archivos de la siguiente manera:
-        </p>
-        <$PR elevation={0} lang="json">
-          {JSON.stringify(
-            asciiMap
-              .tree("public")
-              .subDir("ex-branch", (branch) => {
+        <EjemploConConsola
+          playground_extra_clases=""
+          js={`
+            var mapa = asciiMap.tree("public").subDir("ex-branch", branch=>{
                 branch.css("style").js("script").jsx("App");
-              })
-              .toJson(),
-            null,
-            1
-          )
-            .replaceAll(`"type": "text/javascript"`, "")
-            .split("\n")
-            .filter((e) => Boolean(e.trim()))
-            .join("\n")}
-        </$PR>
+            });
+              
+            console.log(mapa.toJson());
+          `}
+        />
         <p>
           En esta representación, cada carpeta y archivo está claramente
           definido, permitiendo ver su relación dentro de la estructura del
@@ -211,5 +179,29 @@ function _cascade() {
         </p>
       </$CardDef>
     </$FMD>
+  );
+}
+function EjemploConConsola({
+  js,
+  playground_extra_clases = "minimo-1-pestaña",
+}) {
+  return (
+    <Editor_en_linea
+      playground_extra_clases={playground_extra_clases}
+      nombre_proyecto="proyecto-de-prueba-1"
+      plantilla_HTML={template_html}
+      extra_js={() => {
+        abrir_consola();
+        bloquear_consola();
+      }}
+      HTML="#basic-console"
+      CSS="#basic-console"
+      JS={js}
+      index={0}
+      ocultar_pestañas={true}
+      ocultar_pestaña_HTML={true}
+      ocultar_pestaña_CSS={true}
+      ocultar_pestaña_JSX={true}
+    />
   );
 }

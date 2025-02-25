@@ -1,9 +1,27 @@
+let template_html;
 function initApp() {
   setup();
   burn_template();
   ready();
 
   function setup() {
+    template_html = (() => {
+      const s = loadStringsSync(
+        asciiMap.CLI.myUI().playground_template.html_jsdelivr
+      );
+      if (s) {
+        return s
+          .replaceAll(
+            "iframe.css",
+            asciiMap.CLI.myUI().playground_template.css
+          )
+          .replaceAll(
+            "iframe.js",
+            asciiMap.CLI.myUI().playground_template.js
+          )
+      }
+    })();
+
     Object.assign(config_template, {
       banner: {
         left: {
