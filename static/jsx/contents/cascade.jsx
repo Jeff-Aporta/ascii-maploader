@@ -28,20 +28,16 @@ function _cascade() {
         <$h />
         Un ejemplo de cómo usar esta función es el siguiente:
         <Editor_en_linea
-        nombre_proyecto="proyecto-de-prueba-1"
-        plantilla_HTML={asciiMap.CLI.myUI().playground_template.html}
-        extra_js={() => abrir_consola()}
-        HTML={Array.from(
-          { length: 50 },
-          (_, i) => `<h3>Hola desde el encabezado 1</h3>`
-        ).join("")}
-        JS={`console.log("Hola desde JavaScript")`}
-        index={0}
-      />
+          nombre_proyecto="proyecto-de-prueba-1"
+          plantilla_HTML={asciiMap.CLI.myUI().playground_template.html}
+          extra_js={() => abrir_consola()}
+          JS={`const my_tree = asciiMap.tree("name-root");console.log(my_tree.toString());`}
+          index={0}
+        />
         <$PR
           elevation={0}
           lang="js"
-        >{`var my_tree = asciiMap.tree("name-root");`}</$PR>
+        >{`const my_tree = asciiMap.tree("name-root");`}</$PR>
         En este caso, my_tree será el árbol que contiene todos los elementos que
         vayas a agregar a partir de este punto. Esta organización es fundamental
         para proyectos más complejos, donde es necesario mantener una estructura

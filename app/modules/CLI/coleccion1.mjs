@@ -6,6 +6,8 @@ const { react_mui_fa, prettier_codemirror, FileSaver_jszip, PR } = external;
 const jeff_aporta = "https://jeff-aporta.github.io";
 const designsysclirender = join(jeff_aporta, "design-sys-cli-render");
 const playgound = join(designsysclirender, `componentes/playground`);
+const playgound_jsdelivr =
+  "https://cdn.jsdelivr.net/gh/Jeff-Aporta/design-sys-cli-render@main/componentes/playground";
 const DocuDesign = join(designsysclirender, "DocuDesign/static");
 
 const myUI = {
@@ -20,6 +22,7 @@ const myUI = {
     );
   },
   playground_template: {
+    html_jsdelivr: join(playgound_jsdelivr, "template", "iframe.html"),
     html: join(playgound, "template", "iframe.html"),
     css: join(playgound, "template", "iframe.css"),
     js: join(playgound, "template", "iframe.js"),
