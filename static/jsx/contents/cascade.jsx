@@ -27,6 +27,17 @@ function _cascade() {
         diferentes archivos entre sí.
         <$h />
         Un ejemplo de cómo usar esta función es el siguiente:
+        <Editor_en_linea
+        nombre_proyecto="proyecto-de-prueba-1"
+        plantilla_HTML={asciiMap.CLI.myUI().playground_template.html}
+        extra_js={() => abrir_consola()}
+        HTML={Array.from(
+          { length: 50 },
+          (_, i) => `<h3>Hola desde el encabezado 1</h3>`
+        ).join("")}
+        JS={`console.log("Hola desde JavaScript")`}
+        index={0}
+      />
         <$PR
           elevation={0}
           lang="js"

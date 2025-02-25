@@ -15,7 +15,7 @@ const myUI = {
   playground: () => {
     writenodes(
       ...["editor-en-linea.jsx", "editor-en-linea.css"].map((x) =>
-        join(playgound, x)
+        join(playgound, "template", x)
       )
     );
   },
