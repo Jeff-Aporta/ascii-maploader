@@ -29,7 +29,7 @@ function _cascade() {
         Un ejemplo de cómo usar esta función es el siguiente:
         <Editor_en_linea
           nombre_proyecto="proyecto-de-prueba-1"
-          plantilla_HTML={asciiMap.CLI.myUI().playground_template.html}
+          plantilla_HTML={asciiMap.CLI.myUI().playground_template.html_jsdelivr}
           extra_js={() => abrir_consola()}
           JS={`const my_tree = asciiMap.tree("name-root");console.log(my_tree.toString());`}
           index={0}
