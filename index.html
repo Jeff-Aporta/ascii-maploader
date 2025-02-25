@@ -26,7 +26,9 @@
     />
 
     <script>
-      window["jeff-aporta-default"] = "../";
+      if (!window.location.href.includes("github")) {
+        window["jeff-aporta-default"] = "../";
+      }
     </script>
 
     <script src="static/js/index.all.min.js"></script>
