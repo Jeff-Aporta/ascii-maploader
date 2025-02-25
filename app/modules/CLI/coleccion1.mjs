@@ -23,6 +23,8 @@ const myUI = {
   },
   playground_template: {
     html_jsdelivr: join(playgound_jsdelivr, "template", "iframe.html"),
+    css_jsdelivr: join(playgound_jsdelivr, "template", "iframe.css"),
+    js_jsdelivr: join(playgound_jsdelivr, "template", "iframe.js"),
     html: join(playgound, "template", "iframe.html"),
     css: join(playgound, "template", "iframe.css"),
     js: join(playgound, "template", "iframe.js"),
