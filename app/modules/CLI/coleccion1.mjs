@@ -26,6 +26,7 @@ const myUI = {
   DocuDesignPR: () => designSysCliRender_DocuDesignPR(),
   DocuDesignBody: () => designSysCliRender_DocuDesign_body(),
   playground: () => {
+    designSysCliRender_DocuDesign_allTemplates();
     writenodes(
       ...["editor-en-linea.jsx", "editor-en-linea.css"].map((x) =>
         join(playgound, x)
@@ -113,6 +114,10 @@ function designSysCliRender_DocuDesignPR() {
 function designSysCliRender_DocuDesign() {
   react_mui_fa();
   fluidCSS();
+  designSysCliRender_DocuDesign_allTemplates();
+}
+
+function designSysCliRender_DocuDesign_allTemplates() {
   writenodes(
     ...["all.templates.min.js", "all.styles.min.css"].map((x) =>
       join(DocuDesign, x)
