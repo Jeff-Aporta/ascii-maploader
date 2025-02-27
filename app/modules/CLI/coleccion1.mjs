@@ -25,8 +25,23 @@ const myUI = {
   DocuDesign: () => designSysCliRender_DocuDesign(),
   DocuDesignPR: () => designSysCliRender_DocuDesignPR(),
   DocuDesignBody: () => designSysCliRender_DocuDesign_body(),
+  comun: {
+    muisetup: () => {
+      writenodes(join(designsysclirender, "comun/jsx/00-mui-setup.jsx"));
+    },
+    tools: () => {
+      writenodes(join(designsysclirender, "comun/jsx/01-tools.jsx"));
+    },
+    main_sass: () => {
+      writenodes(join(designsysclirender, "comun/css/main-sass.css"));
+    },
+    all: () => {
+      myUI.comun.muisetup();
+      myUI.comun.tools();
+      myUI.comun.main_sass();
+    },
+  },
   playground: () => {
-    designSysCliRender_DocuDesign_allTemplates();
     writenodes(
       ...["editor-en-linea.jsx", "editor-en-linea.css"].map((x) =>
         join(playgound, x)
