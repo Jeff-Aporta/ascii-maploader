@@ -3,7 +3,7 @@ import { forceEnd } from "./tools.mjs";
 
 export { writehtml, writenodes, render_html, html };
 
-const alert_icon = "\u26A0"
+const alert_icon = "\u26A0";
 
 function render_html({ archivo, type, ext, defer }) {
   if (ext == ".css") {
@@ -19,11 +19,11 @@ function render_html({ archivo, type, ext, defer }) {
   }
 
   function onerror(atr) {
-    const sentences = [
+    let sentences = [
       `
         console.log(
-          "%c${alert_icon} asciiMap: No se pudo cargar: this.${atr}",
-          "
+          '%c${alert_icon} asciiMap: No se pudo cargar: this.${atr}',
+          '
             color: orange; 
             font-weight: bolder
 
@@ -31,11 +31,14 @@ function render_html({ archivo, type, ext, defer }) {
             padding: 5px; 
 
             text-shadow: 2px 2px 0px gray;
-          "
+          '
         );
       `,
       `this.remove()`,
     ].map((s) => s.replace(/\s+/g, " "));
+
+    sentences = [];
+
     return `
       onerror="${sentences.join("; ")}"
     `.trim();
