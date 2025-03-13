@@ -103,6 +103,8 @@ function designSysCliRender_DocuDesign_body() {
         try {
           initApp();
         } catch (error) {
+          console.log(error);
+          console.error(error);
           document.querySelector("#root #error").innerHTML = error;
         }
       </script>
